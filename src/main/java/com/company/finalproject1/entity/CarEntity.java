@@ -27,6 +27,7 @@ public class CarEntity {
 
     @OneToOne(mappedBy = "carEntity")
     private DriverEntity driverEntity;
+    //salam
 
 
 
