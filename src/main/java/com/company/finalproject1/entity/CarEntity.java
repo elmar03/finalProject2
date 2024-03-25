@@ -1,15 +1,15 @@
 package com.company.finalproject1.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
+@Entity
 @Data
-@Table
+@Table(name = "car")
 public class CarEntity {
 
     @Id
@@ -21,7 +21,13 @@ public class CarEntity {
     private String carModel;
     private String carColour;
     private Integer carNumber;
-    private  Integer carYear;
+    private Integer carYear;
     private String carSize;
+
+
+    @OneToOne(mappedBy = "carEntity")
+    private DriverEntity driverEntity;
+
+
 
 }

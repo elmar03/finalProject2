@@ -1,13 +1,11 @@
 package com.company.finalproject1.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Data
 @Table
 public class DriverEntity {
@@ -19,6 +17,12 @@ public class DriverEntity {
     private  String driverName;
     private  String driverSurname;
     private String driverLanguage;
+
+    @OneToOne
+    @JoinColumn(name = "driver_id")
+    private CarEntity carEntity;
+
+
 
 
 }
