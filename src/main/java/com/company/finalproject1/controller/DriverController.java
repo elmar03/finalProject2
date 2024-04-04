@@ -1,10 +1,7 @@
 package com.company.finalproject1.controller;
 
-import com.company.finalproject1.dto.CarRequestDto;
-import com.company.finalproject1.dto.CarResponseDto;
 import com.company.finalproject1.dto.DriverRequestDto;
 import com.company.finalproject1.dto.DriverResponseDto;
-import com.company.finalproject1.entity.CarEntity;
 import com.company.finalproject1.entity.DriverEntity;
 import com.company.finalproject1.service.DriverService;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +32,7 @@ public class DriverController {
     }
 
     @PutMapping("/post")
-    public DriverResponseDto update (@PathVariable Long id, DriverRequestDto driverRequestDto) {
+    public DriverEntity update (@PathVariable Long id, DriverRequestDto driverRequestDto) {
         return driverService.update(id,driverRequestDto);
     }
 

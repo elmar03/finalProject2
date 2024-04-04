@@ -28,17 +28,17 @@ public class CarController {
     @PostMapping("/create")
     public ResponseEntity<String> createCar(@RequestBody CarEntity carEntity) {
         carService.createCar(carEntity);
-        return ResponseEntity.ok("Car created!");
+        return ResponseEntity.ok("Car is created!");
     }
 
     @PutMapping("/post")
-    public CarResponseDto update (@PathVariable Long id, CarRequestDto carRequestDto) {
+    public CarEntity update (@PathVariable long id, CarRequestDto carRequestDto) {
         return carService.update(id, carRequestDto);
     }
 
     @DeleteMapping("/delete{id}")
     public ResponseEntity<String> deleteCarById (@PathVariable long id) {
         carService.deleteCar(id);
-        return ResponseEntity.ok("Car deleted!");
+        return ResponseEntity.ok("Car is deleted!");
     }
 }

@@ -14,4 +14,14 @@ public class CarResponseDto {
     private Integer carNumber;
     private  Integer carYear;
     private String carSize;
+
+    public CarResponseDto(Long carId, String carBrand, String carModel, String carColour, Integer carNumber, Integer carYear, String carSize) {
+        this.carId = carId;
+        this.carBrand = carBrand;
+        this.carModel = carModel;
+        this.carColour = carColour;
+        this.carNumber = carNumber;
+        this.carYear = carYear;
+        this.carSize = carSize;
+    }
 }

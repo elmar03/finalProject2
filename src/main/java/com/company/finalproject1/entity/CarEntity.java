@@ -1,5 +1,6 @@
 package com.company.finalproject1.entity;
 
+import com.company.finalproject1.enums.Options;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -24,11 +25,16 @@ public class CarEntity {
     private Integer carYear;
     private String carSize;
 
+    @Enumerated (EnumType.STRING)
+    private Options options;
+
+
+
 
     @OneToOne(mappedBy = "carEntity")
     private DriverEntity driverEntity;
 
-    // Nubar 252
+
 
 
 
