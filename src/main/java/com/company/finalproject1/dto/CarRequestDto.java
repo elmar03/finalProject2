@@ -8,11 +8,13 @@ import lombok.Setter;
 public class CarRequestDto {
 
 
-    private String carBrand;
-    private String carModel;
-    private String carColour;
-    private Integer carNumber;
-    private  Integer carYear;
-    private String carSize;
+    private String brand;
+    private String model;
+    private String colour;
+    private Integer number;
+    private Integer year;
+    private String size;
+    private Double carLat;
+    private Double carLong;
 
 }

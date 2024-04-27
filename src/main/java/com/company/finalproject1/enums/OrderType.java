@@ -1,6 +1,6 @@
 package com.company.finalproject1.enums;
 
-public enum Order {
+public enum OrderType {
     PENDING,
     ACCEPTED,
     COMPLETED,

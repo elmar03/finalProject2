@@ -8,20 +8,14 @@ import lombok.Setter;
 public class CarResponseDto {
 
     private Long carId;
-    private String carBrand;
-    private String carModel;
-    private String carColour;
-    private Integer carNumber;
-    private  Integer carYear;
-    private String carSize;
+    private String brand;
+    private String model;
+    private String colour;
+    private Integer number;
+    private  Integer year;
+    private String size;
+    private Double carLat;
+    private Double carLong;
 
-    public CarResponseDto(Long carId, String carBrand, String carModel, String carColour, Integer carNumber, Integer carYear, String carSize) {
-        this.carId = carId;
-        this.carBrand = carBrand;
-        this.carModel = carModel;
-        this.carColour = carColour;
-        this.carNumber = carNumber;
-        this.carYear = carYear;
-        this.carSize = carSize;
-    }
+
 }

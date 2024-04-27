@@ -26,12 +26,12 @@ public class CarController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createCar(@RequestBody CarEntity carEntity) {
-        carService.createCar(carEntity);
+    public ResponseEntity<String> createCar(@RequestBody CarRequestDto carRequestDto) {
+        carService.createCar(carRequestDto);
         return ResponseEntity.ok("Car is created!");
     }
 
-    @PutMapping("/post")
+    @PutMapping("/post{id}")
     public CarEntity update (@PathVariable long id, CarRequestDto carRequestDto) {
         return carService.update(id, carRequestDto);
     }

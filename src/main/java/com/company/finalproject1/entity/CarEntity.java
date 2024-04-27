@@ -1,41 +1,41 @@
 package com.company.finalproject1.entity;
 
-import com.company.finalproject1.enums.Options;
+import com.company.finalproject1.enums.OptionsType;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.List;
-
-@Entity
-@Data
-@Table(name = "car")
-public class CarEntity {
-
-    @Id
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long carId;
-    private String carBrand;
-    private String carModel;
-    private String carColour;
-    private Integer carNumber;
-    private Integer carYear;
-    private String carSize;
-
-    @Enumerated (EnumType.STRING)
-    private Options options;
 
 
+   @Entity
+   @Data
+   @Table(name = "car")
+    public class CarEntity {
+
+        @Id
+
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+        private Long carId;
+        private String brand;
+        private String model;
+        private String colour;
+        private Integer number;
+        private Integer year;
+        private String size;
+       private Double carLat;
+       private Double carLong;
+
+
+
+    @Enumerated(EnumType.STRING)
+    private OptionsType options;
+
+
+
+
+    //  V(hx - cx)2 + (hy - cy)2
 
 
     @OneToOne(mappedBy = "carEntity")
     private DriverEntity driverEntity;
-
-
-
-
 
 }

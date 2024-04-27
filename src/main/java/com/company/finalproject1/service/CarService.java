@@ -30,8 +30,8 @@ public class CarService {
                 .collect(Collectors.toList());
     }
 
-    public void createCar(CarEntity carEntity) {
-        CarEntity map = mapper.map(carEntity, CarEntity.class);
+    public void createCar(CarRequestDto carRequestDto) {
+        CarEntity map = mapper.map(carRequestDto, CarEntity.class);
         carRepo.save(map);
     }
 
