@@ -26,8 +26,8 @@ public class DriverController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createDriver(@RequestBody DriverEntity driverEntity) {
-       driverService.createDriver(driverEntity);
+    public ResponseEntity<String> createDriver(@RequestBody DriverRequestDto driverRequestDto) {
+       driverService.createDriver(driverRequestDto);
         return ResponseEntity.ok("Driver is created!");
     }
 

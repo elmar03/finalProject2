@@ -33,8 +33,8 @@ public class DriverService {
                 .collect(Collectors.toList());
     }
 
-    public void createDriver (DriverEntity driverEntity) {
-        DriverEntity map = modelMapper.map(driverEntity, DriverEntity.class);
+    public void createDriver (DriverRequestDto driverRequestDto) {
+        DriverEntity map = modelMapper.map(driverRequestDto, DriverEntity.class);
         driverRepo.save(map);
     }
 

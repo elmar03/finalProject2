@@ -1,6 +1,6 @@
 package com.company.finalproject1.enums;
 
-public enum Options {
+public enum OptionsType {
     BASIC,
     XL,
     GREEN,

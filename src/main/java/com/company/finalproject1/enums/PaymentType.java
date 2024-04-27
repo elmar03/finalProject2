@@ -1,6 +1,6 @@
 package com.company.finalproject1.enums;
 
-public enum Payment {
+public enum PaymentType {
     PENDING,
     PAID,
     FAILED
