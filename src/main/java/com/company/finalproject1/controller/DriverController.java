@@ -3,6 +3,7 @@ package com.company.finalproject1.controller;
 import com.company.finalproject1.dto.DriverRequestDto;
 import com.company.finalproject1.dto.DriverResponseDto;
 import com.company.finalproject1.entity.DriverEntity;
+import com.company.finalproject1.entity.OrderEntity;
 import com.company.finalproject1.service.DriverService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,11 @@ public class DriverController {
     public ResponseEntity<String> deleteDriverById (@PathVariable long id) {
         driverService.deleteDriver(id);
         return ResponseEntity.ok("Driver is deleted!");
+    }
+    @GetMapping("complete-order")
+    public OrderEntity completeRide (@RequestParam long id) {
+       return driverService.completeOrder(id);
+
     }
 }
 

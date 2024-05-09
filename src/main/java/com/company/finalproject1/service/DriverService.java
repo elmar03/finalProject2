@@ -3,7 +3,12 @@ package com.company.finalproject1.service;
 import com.company.finalproject1.dto.DriverRequestDto;
 import com.company.finalproject1.dto.DriverResponseDto;
 import com.company.finalproject1.entity.DriverEntity;
+import com.company.finalproject1.entity.OrderEntity;
+import com.company.finalproject1.enums.OrderType;
+import com.company.finalproject1.repository.CarRepo;
 import com.company.finalproject1.repository.DriverRepo;
+import com.company.finalproject1.repository.OrderRepo;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,19 +17,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class DriverService {
 
     private  final DriverRepo driverRepo;
     private final ModelMapper modelMapper;
+    private final OrderRepo orderRepo;
+    private final CarRepo carRepo;
 
 
 
-
-    public DriverService(DriverRepo driverRepo, ModelMapper modelMapper) {
-        this.driverRepo = driverRepo;
-        this.modelMapper = modelMapper;
-
-    }
 
     public List<DriverResponseDto> getAllDrivers() {
         List<DriverEntity> allDrivers = driverRepo.findAll();
@@ -54,4 +56,34 @@ public class DriverService {
 
     }
 
+
+//    public void cancelledByDriver(Long id){
+//        DriverEntity driverEntity = driverRepo.findById(id).orElseThrow();
+//       driverEntity.setOrderType(OrderType.CANCELED);
+//    }
+
+
+    public OrderEntity completeOrder(Long id) {
+        OrderEntity orderEntity = orderRepo.findById(id).orElseThrow();
+
+        if (orderEntity.getOrderType() == OrderType.ACCEPTED) {
+            orderEntity.setOrderType(OrderType.PENDING);
+
+        } else if (orderEntity.getOrderType() == OrderType.PENDING) {
+            orderEntity.setOrderType(OrderType.COMPLETED);
+            orderRepo.save(orderEntity);
+
+        } else {
+            throw new RuntimeException("Invalid order status");
+        }
+
+        return orderEntity;
+    }
+
+
+
+
+
 }
+
+
