@@ -17,6 +17,4 @@ public class CarRequestDto {
     private Double carLat;
     private Double carLong;
 
-    private Long driverId;
-
 }

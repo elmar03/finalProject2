@@ -1,6 +1,5 @@
 package com.company.finalproject1.controller;
 
-import com.company.finalproject1.Exception.DriverNotFoundException;
 import com.company.finalproject1.dto.CarRequestDto;
 import com.company.finalproject1.dto.CarResponseDto;
 import com.company.finalproject1.entity.CarEntity;
@@ -27,7 +26,7 @@ public class CarController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createCar(@RequestBody CarRequestDto carRequestDto) throws DriverNotFoundException {
+    public ResponseEntity<String> createCar(@RequestBody CarRequestDto carRequestDto) {
         carService.createCar(carRequestDto);
         return ResponseEntity.ok("Car is created!");
     }
@@ -42,5 +41,6 @@ public class CarController {
         carService.deleteCar(id);
         return ResponseEntity.ok("Car is deleted!");
     }
+
 
 }
