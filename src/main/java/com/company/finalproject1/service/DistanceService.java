@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -42,9 +43,6 @@ public class DistanceService {
         return (int) (Math.round(AVERAGE_RADIUS_OF_EARTH_KM * c) * 1000);
     }
 
-
-
-
     public List <CarResponseDto> findFiveNearestCars(List<CarResponseDto> cars, double userLat, double userLng) {
         List <CarResponseDto> nearestCars = cars.stream()
                 .sorted(Comparator.comparingInt(car -> calculateDistanceInKilometer(car.getCarId(), car.getNumber(), userLat, userLng)))
@@ -53,38 +51,53 @@ public class DistanceService {
         return nearestCars;
     }
 
-
     public Integer priceGenerator () {
         Random rand = new Random();
-        int randomNumber = rand.nextInt (20);
-         return  randomNumber;
-
+        return rand.nextInt (21)+10;
     }
-
 
     public FeedbackEntity saveFeedback(FeedbackRequestDto feedbackRequestDto) {
         FeedbackEntity feedbackEntity = mapper.map(feedbackRequestDto, FeedbackEntity.class);
         feedbackRepo.save(feedbackEntity);
-        return feedbackEntity;  }
+        return feedbackEntity;
+    }
 
 
+//    public  List<TaxiResponseDto> orderReview (Long orderId) {
+//        Integer price = priceGenerator();
+//        List <TaxiResponseDto> responseList = new ArrayList<>();
+//        OrderEntity orderEntity = orderRepo.findById(orderId).orElseThrow();
+//        DriverEntity driverEntity = driverRepo.findById((orderEntity.getDriverId())).orElseThrow() ;
+//        DriverResponseDto driverResponseDto = mapper.map(driverEntity, DriverResponseDto.class);
+//        CarEntity carEntity = carRepo.findById(orderEntity.getDriverId()).orElseThrow();
+//        CarResponseDto carResponseDto = mapper.map(carEntity, CarResponseDto.class);
+//
+//        TaxiResponseDto responseDto = new TaxiResponseDto();
+//        responseDto.setDriverResponseDto(driverResponseDto);
+//        responseDto.setCarResponseDto(carResponseDto);
+//        responseDto.setPrice(price);
+//        responseList.add(responseDto);
+//        return responseList;
+//     }
 
-
-
-
-    public  List<TaxiResponseDto> orderReview(Long orderId) {
-        Integer price = priceGenerator();
+    public  List<TaxiResponseDto> orderReview () {
         List <TaxiResponseDto> responseList = new ArrayList<>();
-        OrderEntity orderEntity = orderRepo.findById(orderId).orElseThrow();
-        DriverEntity driverEntity = driverRepo.findById((orderEntity.getDriverId())).orElseThrow() ;
-        DriverResponseDto driverResponseDto = mapper.map(driverEntity, DriverResponseDto.class);
-        CarEntity carEntity = carRepo.findById(orderEntity.getDriverId()).orElseThrow();
-        CarResponseDto carResponseDto = mapper.map(carEntity, CarResponseDto.class);
-
+        List<CarEntity> carEntities = carRepo.findAll();
+        List<CarResponseDto> carResponseDTos = carEntities.stream()
+                .map(carEntity -> {
+                    CarResponseDto carResponseDTO = mapper.map(carEntity, CarResponseDto.class);
+                    Optional<DriverEntity> driverEntity = driverRepo.findById(carEntity.getCarId());
+                    if (driverEntity != null){
+                        DriverResponseDto driverResponseDTO = mapper.map(driverEntity, DriverResponseDto.class);
+                        carResponseDTO.setDriverResponseDto(driverResponseDTO);
+                        Integer price = priceGenerator();
+                        carResponseDTO.setPrice(price);
+                    }
+                    return carResponseDTO;
+                })
+                .collect(Collectors.toList());
         TaxiResponseDto responseDto = new TaxiResponseDto();
-        responseDto.setDriverResponseDto(driverResponseDto);
-        responseDto.setCarResponseDto(carResponseDto);
-        responseDto.setPrice(price);
+        responseDto.setCarResponseDto(carResponseDTos);
         responseList.add(responseDto);
         return responseList;
      }

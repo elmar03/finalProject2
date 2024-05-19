@@ -1,6 +1,6 @@
 package com.company.finalproject1.entity;
 
-import com.company.finalproject1.enums.OptionsType;
+import com.company.finalproject1.enums.Options;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -21,19 +21,11 @@ import lombok.Data;
         private Integer number;
         private Integer year;
         private String size;
-       private Double carLat;
-       private Double carLong;
-
-
+        private Double carLat;
+        private Double carLong;
 
     @Enumerated(EnumType.STRING)
-    private OptionsType options;
-
-
-
-
-    //  V(hx - cx)2 + (hy - cy)2
-
+    private Options options;
 
     @OneToOne(mappedBy = "carEntity")
     private DriverEntity driverEntity;

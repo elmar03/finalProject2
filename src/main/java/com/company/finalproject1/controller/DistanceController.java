@@ -25,32 +25,28 @@ public class DistanceController {
         List<CarResponseDto> cars = carService.getAll();
         List<CarResponseDto> nearestCars = distanceService.findFiveNearestCars(cars, latitude, longitude);
         return nearestCars;
-
-
     }
 
     @GetMapping ("/random-price")
     public ResponseEntity<String> getPrice () {
         Integer i = distanceService.priceGenerator();
         return ResponseEntity.ok("The ride price is: " + i+"$");
-
-
     }
-
 
     @PostMapping("/feedback")
     public FeedbackEntity submitFeedback(@RequestBody FeedbackRequestDto feedback) {
         feedback.setSubmissionDate(new Date());
         return  distanceService.saveFeedback(feedback);
-
-
     }
 
     @PostMapping ("/orderReview")
-    public List<TaxiResponseDto> orderReview (@RequestParam Long id) {
-        return distanceService.orderReview(id);
+    public List<TaxiResponseDto> orderReview () {
+        return distanceService.orderReview();
     }
-
-
-
 }
+
+//@PostMapping("/feedback")
+//public FeedbackEntity submitFeedback(@RequestBody FeedbackRequestDto feedback) {
+//    feedback.setSubmissionDate(new Date());
+//    return  distanceService.saveFeedback(feedback);
+//}

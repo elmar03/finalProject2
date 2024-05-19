@@ -4,7 +4,7 @@ import com.company.finalproject1.dto.DriverRequestDto;
 import com.company.finalproject1.dto.DriverResponseDto;
 import com.company.finalproject1.entity.DriverEntity;
 import com.company.finalproject1.entity.OrderEntity;
-import com.company.finalproject1.enums.OrderType;
+import com.company.finalproject1.enums.OrderStatus;
 import com.company.finalproject1.repository.CarRepo;
 import com.company.finalproject1.repository.DriverRepo;
 import com.company.finalproject1.repository.OrderRepo;
@@ -65,20 +65,18 @@ public class DriverService {
 
     public OrderEntity completeOrder(Long id) {
         OrderEntity orderEntity = orderRepo.findById(id).orElseThrow();
-
-        if (orderEntity.getOrderType() == OrderType.ACCEPTED) {
-            orderEntity.setOrderType(OrderType.PENDING);
-
-        } else if (orderEntity.getOrderType() == OrderType.PENDING) {
-            orderEntity.setOrderType(OrderType.COMPLETED);
+        if (orderEntity.getOrderStatus() == OrderStatus.ACCEPTED) {
+            orderEntity.setOrderStatus(OrderStatus.PENDING);
+        } else if (orderEntity.getOrderStatus() == OrderStatus.PENDING) {
+            orderEntity.setOrderStatus(OrderStatus.COMPLETED);
             orderRepo.save(orderEntity);
-
         } else {
             throw new RuntimeException("Invalid order status");
         }
-
         return orderEntity;
     }
+
+    
 
 
 

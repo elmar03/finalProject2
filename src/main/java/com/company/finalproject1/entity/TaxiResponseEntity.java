@@ -8,7 +8,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "taxi-response")
-public class TaxiResponseEntity {
+public class TaxiResponseEntity{
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)

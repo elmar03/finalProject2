@@ -1,7 +1,7 @@
 package com.company.finalproject1.entity;
 
-import com.company.finalproject1.enums.OrderType;
-import com.company.finalproject1.enums.PaymentType;
+import com.company.finalproject1.enums.OrderStatus;
+import com.company.finalproject1.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,14 +19,12 @@ public class DriverEntity {
     private String driverLanguage;
 
 
-
-
     @Enumerated (EnumType.STRING)
     @Column(name = "order_type")
-    private OrderType orderType;
+    private OrderStatus orderType;
 
     @Enumerated(EnumType.STRING)
-    private PaymentType payment;
+    private PaymentStatus payment;
 
     @OneToOne
     @JoinColumn(name = "driver_id")

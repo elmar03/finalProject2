@@ -4,16 +4,25 @@ import com.company.finalproject1.dto.OrderResponseDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 @Component
-@FeignClient(name = "CabProject", url = "https://localhost:8080/order")
+@FeignClient(name = "CabProject", url = "http://localhost:8080")
 public interface ApiConnect {
 
-    @GetMapping ("/activeOrders")
+    @GetMapping ("/order/activeOrders")
     OrderResponseDto getOrderDetails ();
+
+    @PostMapping("/order/sendOrder")
+    OrderResponseDto acceptOrder();
+
+
+
+
+
 
 
 

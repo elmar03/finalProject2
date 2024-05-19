@@ -1,8 +1,11 @@
 package com.company.finalproject1.entity;
 
-import com.company.finalproject1.enums.OptionsType;
-import com.company.finalproject1.enums.OrderType;
-import com.company.finalproject1.enums.PaymentType;
+import com.company.finalproject1.dto.CarResponseDto;
+import com.company.finalproject1.dto.DriverResponseDto;
+import com.company.finalproject1.enums.Options;
+import com.company.finalproject1.enums.OrderStatus;
+import com.company.finalproject1.enums.PaymentMethod;
+import com.company.finalproject1.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,7 +20,7 @@ public class OrderEntity {
 
 
     private Long orderId;
-    private String customerName;
+    private Long   userId;
     private Double pickupLatitude;
     private Double pickupLongitude;
     private Double destinationLatitude;
@@ -25,11 +28,31 @@ public class OrderEntity {
     private LocalDateTime pickupTime;
     private LocalDateTime dropOffTime;
     private double distance;
-    private double fare;
+
+    private PaymentStatus paymentStatus;
+    private OrderStatus orderStatus;
+    private PaymentMethod paymentMethod;
+    private Options options;
+
+    private Long carId;
+    private String brand;
+    private String model;
+    private String colour;
+    private Integer number;
+    private  Integer year;
+    private String size;
+    private Double carLat;
+    private Double carLong;
+
     private Long driverId;
-    private OrderType orderType;
-    private OptionsType optionsType;
-    private PaymentType paymentType;
+    private  String driverName;
+    private  String driverSurname;
+    private String driverLanguage;
+
+    private Integer price;
+
+    private Integer user_review;
+    
 
 
 }

@@ -1,8 +1,11 @@
 package com.company.finalproject1.controller;
 
+import com.company.finalproject1.Exception.DriverNotFoundException;
 import com.company.finalproject1.dto.CarRequestDto;
 import com.company.finalproject1.dto.CarResponseDto;
+import com.company.finalproject1.dto.TaxiResponseDto;
 import com.company.finalproject1.entity.CarEntity;
+import com.company.finalproject1.entity.TaxiResponseEntity;
 import com.company.finalproject1.service.CarService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +28,16 @@ public class CarController {
         return carService.getAll();
     }
 
+
+    @PostMapping("/get-all-new")
+    public List<TaxiResponseDto> getAllCars () {
+        return carService.getAllNew();
+    }
+
+
+
     @PostMapping("/create")
-    public ResponseEntity<String> createCar(@RequestBody CarRequestDto carRequestDto) {
+    public ResponseEntity<String> createCar(@RequestBody CarRequestDto carRequestDto) throws DriverNotFoundException {
         carService.createCar(carRequestDto);
         return ResponseEntity.ok("Car is created!");
     }
