@@ -29,9 +29,13 @@ public class OrderEntity {
     private LocalDateTime dropOffTime;
     private double distance;
 
+    @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
+    @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
+    @Enumerated(EnumType.STRING)
     private Options options;
 
     private Long carId;

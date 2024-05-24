@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Component
-@FeignClient(name = "CabProject", url = "http://localhost:8080")
+@FeignClient(name = "CabProject", url = "http://localhost:8085")
 public interface ApiConnect {
 
     @GetMapping ("/order/activeOrders")
