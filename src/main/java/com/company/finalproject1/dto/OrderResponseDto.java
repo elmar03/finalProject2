@@ -46,4 +46,5 @@ public class OrderResponseDto {
     private Integer price;
 
     private Integer user_review;
+
 }

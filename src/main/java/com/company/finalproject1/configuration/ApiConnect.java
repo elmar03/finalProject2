@@ -1,5 +1,6 @@
 package com.company.finalproject1.configuration;
 
+import com.company.finalproject1.dto.FeedbackResponseDto;
 import com.company.finalproject1.dto.OrderResponseDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
@@ -19,15 +20,8 @@ public interface ApiConnect {
     @PostMapping("/order/sendOrder")
     OrderResponseDto acceptOrder();
 
-
-
-
-
-
-
-
-
-
+    @GetMapping("/feedBack/feedbackByOrderId")
+    List<FeedbackResponseDto> acceptFeedback(long OrderID);
 
 
 }

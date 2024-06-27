@@ -9,6 +9,7 @@ import java.util.Date;
 @Setter
 public class FeedbackResponseDto {
     private Long feedbackId;
+    private Long OrderId;
     private String feedback;
     private Date submissionDate;
     private Integer starNumber;

@@ -33,20 +33,8 @@ public class DistanceController {
         return ResponseEntity.ok("The ride price is: " + i+"$");
     }
 
-    @PostMapping("/feedback")
-    public FeedbackEntity submitFeedback(@RequestBody FeedbackRequestDto feedback) {
-        feedback.setSubmissionDate(new Date());
-        return  distanceService.saveFeedback(feedback);
-    }
-
     @PostMapping ("/orderReview")
     public List<TaxiResponseDto> orderReview () {
         return distanceService.orderReview();
     }
 }
-
-//@PostMapping("/feedback")
-//public FeedbackEntity submitFeedback(@RequestBody FeedbackRequestDto feedback) {
-//    feedback.setSubmissionDate(new Date());
-//    return  distanceService.saveFeedback(feedback);
-//}

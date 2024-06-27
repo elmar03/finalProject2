@@ -16,10 +16,9 @@ import java.time.LocalDateTime;
 public class OrderEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
+
     private Long   userId;
     private Double pickupLatitude;
     private Double pickupLongitude;
