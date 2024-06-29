@@ -20,7 +20,7 @@ public interface ApiConnect {
     @PostMapping("/order/sendOrder")
     OrderResponseDto acceptOrder();
 
-    @GetMapping("/feedBack/feedbackByOrderId")
+    @GetMapping("/feedback/feedbackByOrderId")
     List<FeedbackResponseDto> acceptFeedback(long OrderID);
 
 
