@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FeedbackRepo extends JpaRepository<FeedbackEntity, Long> {
+
+    FeedbackEntity findByOrderID(Long orderId);
+
 }

@@ -22,6 +22,7 @@ public class FeedbackEntity {
     private String feedback;
     private Date submissionDate;
     private Integer starNumber;
+    private Long orderID;
 
 
 }

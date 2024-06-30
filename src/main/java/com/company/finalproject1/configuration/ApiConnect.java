@@ -21,8 +21,7 @@ public interface ApiConnect {
     OrderResponseDto acceptOrder();
 
     @GetMapping("/feedback/feedbackByOrderId")
-    List<FeedbackResponseDto> acceptFeedback(long OrderID);
-
+    List<FeedbackResponseDto> acceptFeedback(@RequestParam("orderId")long orderID);
 
 }
 
