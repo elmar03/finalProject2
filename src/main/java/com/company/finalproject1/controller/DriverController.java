@@ -26,11 +26,11 @@ public class DriverController {
         return driverService.getAllDrivers();
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<String> createDriver(@RequestBody DriverRequestDto driverRequestDto) {
-       driverService.createDriver(driverRequestDto);
-        return ResponseEntity.ok("Driver is created!");
-    }
+//    @PostMapping("/create")
+//    public ResponseEntity<String> createDriver(@RequestBody DriverRequestDto driverRequestDto) {
+//       driverService.createDriver(driverRequestDto);
+//        return ResponseEntity.ok("Driver is created!");
+//    }
 
     @PutMapping("/post")
     public DriverEntity update (@PathVariable Long id, DriverRequestDto driverRequestDto) {
