@@ -3,7 +3,9 @@ package com.company.finalproject1.entity;
 import com.company.finalproject1.enums.OrderStatus;
 import com.company.finalproject1.enums.PaymentStatus;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
@@ -14,9 +16,14 @@ public class DriverEntity {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
 
     private Long driverId;
+    private String username;
+    private String password;
+    private String role;
     private  String driverName;
     private  String driverSurname;
     private String driverLanguage;
+
+
 
     @Enumerated (EnumType.STRING)
     @Column(name = "order_type")
@@ -28,7 +35,6 @@ public class DriverEntity {
     @OneToOne
     @JoinColumn(name = "driver_id")
     private CarEntity carEntity;
-
 
 
 
