@@ -18,7 +18,6 @@ public class DriverEntity {
     private  String driverSurname;
     private String driverLanguage;
 
-
     @Enumerated (EnumType.STRING)
     @Column(name = "order_type")
     private OrderStatus orderType;
