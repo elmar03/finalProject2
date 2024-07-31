@@ -10,6 +10,8 @@ import lombok.Data;
    @Table(name = "car")
     public class CarEntity {
 
+
+
         @Id
 
         @GeneratedValue(strategy = GenerationType.IDENTITY)
