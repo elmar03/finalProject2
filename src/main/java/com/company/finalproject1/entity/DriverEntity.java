@@ -16,7 +16,9 @@ public class DriverEntity {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
 
     private Long driverId;
+
     private String username;
+
     private String password;
     private String role;
     private  String driverName;
