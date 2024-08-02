@@ -6,10 +6,12 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchConnectionDetails;
 
 @Entity
 @Data
 @Table(name = "drivers")
+@RequiredArgsConstructor
 public class DriverEntity {
 
     @Id
@@ -37,7 +39,6 @@ public class DriverEntity {
     @OneToOne
     @JoinColumn(name = "driver_id")
     private CarEntity carEntity;
-
 
 
 }
